@@ -35,6 +35,7 @@ class HomeScreen extends StatelessWidget {
                               id: myNotes.notes[i].id,
                               title: myNotes.notes[i].title,
                               content: myNotes.notes[i].content,
+                              // share: myNotes.notes[i].sharePdf,
                             ),
                           ),
                   ),

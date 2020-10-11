@@ -58,11 +58,6 @@ class _AddNewNoteScreenState extends State<AddNewNoteScreen> {
     Navigator.pop(context);
   }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

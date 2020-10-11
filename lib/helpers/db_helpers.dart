@@ -11,7 +11,7 @@ class DBHelper {
     }, version: 1);
   }
 
-  static Future<void> insert(String table, Map<String, Object> data) async {
+  static Future<void> insert({String table, Map<String, Object> data}) async {
     final db = await DBHelper.database();
     print('database is open');
     db.insert(
@@ -21,7 +21,7 @@ class DBHelper {
     );
   }
 
-  static Future<List<Map<String, dynamic>>> getData(String table) async {
+  static Future<List<Map<String, dynamic>>> getData({String table}) async {
     final db = await DBHelper.database();
     print('database is open');
     return db.query(table, orderBy: 'id DESC');

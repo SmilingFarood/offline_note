@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myNotes/providers/noteStore.dart';
+
 import 'package:provider/provider.dart';
 
 class ListNotesWidget extends StatelessWidget {
@@ -8,14 +9,15 @@ class ListNotesWidget extends StatelessWidget {
   final String content;
   final Function deleteFunction;
   final GlobalKey itemKey;
+  final Function share;
 
-  ListNotesWidget({
-    this.id,
-    this.title,
-    this.content,
-    this.deleteFunction,
-    this.itemKey,
-  });
+  ListNotesWidget(
+      {this.id,
+      this.title,
+      this.content,
+      this.deleteFunction,
+      this.itemKey,
+      this.share});
 
   @override
   Widget build(BuildContext context) {
@@ -57,17 +59,21 @@ class ListNotesWidget extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          child: IconButton(
-                            icon: Icon(Icons.delete),
-                            color: Theme.of(context).errorColor,
-                            onPressed: () {
-                              Provider.of<MyNotes>(context, listen: false)
-                                  .deleteNote(
-                                id: id,
-                                title: title,
-                                content: content,
-                              );
-                            },
+                          child: Row(
+                            children: <Widget>[
+                              IconButton(
+                                icon: Icon(Icons.delete),
+                                color: Theme.of(context).errorColor,
+                                onPressed: () {
+                                  Provider.of<MyNotes>(
+                                    context,
+                                    listen: false,
+                                  ).deleteNote(
+                                    id: id,
+                                  );
+                                },
+                              ),
+                            ],
                           ),
                         )
                       ],
