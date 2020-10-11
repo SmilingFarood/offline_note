@@ -13,7 +13,7 @@ class DBHelper {
 
   static Future<void> insert({String table, Map<String, Object> data}) async {
     final db = await DBHelper.database();
-    print('database is open');
+
     db.insert(
       table,
       data,
@@ -23,14 +23,14 @@ class DBHelper {
 
   static Future<List<Map<String, dynamic>>> getData({String table}) async {
     final db = await DBHelper.database();
-    print('database is open');
+
     return db.query(table, orderBy: 'id DESC');
   }
 
   static Future<void> updateData(
       {String table, Map<String, dynamic> values, String id}) async {
     final db = await DBHelper.database();
-    print('database is open');
+
     db.update(
       table,
       values,
@@ -42,7 +42,7 @@ class DBHelper {
 
   static Future<void> deleteNoteData({String table, String id}) async {
     final db = await DBHelper.database();
-    print('database is open');
+
     db.delete(
       table,
       where: 'id = ?',
@@ -53,6 +53,5 @@ class DBHelper {
   static Future<void> closeDB() async {
     final db = await DBHelper.database();
     db.close();
-    print('Database is closed');
   }
 }

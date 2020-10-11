@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myNotes/providers/externalHelpers.dart';
 import 'package:myNotes/providers/noteStore.dart';
 
 import 'package:provider/provider.dart';
@@ -61,6 +62,56 @@ class ListNotesWidget extends StatelessWidget {
                         Container(
                           child: Row(
                             children: <Widget>[
+                              IconButton(
+                                icon: Icon(Icons.open_with),
+                                onPressed: () {
+                                  return showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        actions: <Widget>[
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: <Widget>[
+                                              FlatButton.icon(
+                                                onPressed: () {
+                                                  Provider.of<ExternalHelpers>(
+                                                          context,
+                                                          listen: false)
+                                                      .openMyNoteAsPdf(
+                                                    id: id,
+                                                    title: title,
+                                                    content: content,
+                                                  );
+                                                  Navigator.of(context).pop();
+                                                },
+                                                icon: Icon(Icons.open_in_new),
+                                                label: Text('Open as PDF'),
+                                              ),
+                                              FlatButton.icon(
+                                                onPressed: () {
+                                                  Provider.of<ExternalHelpers>(
+                                                          context,
+                                                          listen: false)
+                                                      .shareMyNote(
+                                                    id: id,
+                                                    title: title,
+                                                    content: content,
+                                                  );
+                                                  Navigator.of(context).pop();
+                                                },
+                                                icon: Icon(Icons.share),
+                                                label: Text('Share file'),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
                               IconButton(
                                 icon: Icon(Icons.delete),
                                 color: Theme.of(context).errorColor,

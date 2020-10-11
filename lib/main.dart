@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myNotes/providers/externalHelpers.dart';
 import 'package:myNotes/providers/noteStore.dart';
 import 'package:myNotes/screens/addNewNoteScreen.dart';
 import 'package:myNotes/screens/homeScreen.dart';
@@ -8,6 +9,7 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => MyNotes()),
+      ChangeNotifierProvider(create: (_) => ExternalHelpers()),
     ],
     child: MyApp(),
   ));
