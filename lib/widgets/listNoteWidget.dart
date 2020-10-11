@@ -48,7 +48,11 @@ class ListNotesWidget extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text(title),
+                                  Text(
+                                    title,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                   Text(
                                     content,
                                     overflow: TextOverflow.ellipsis,
@@ -64,6 +68,7 @@ class ListNotesWidget extends StatelessWidget {
                             children: <Widget>[
                               IconButton(
                                 icon: Icon(Icons.open_with),
+                                color: Theme.of(context).buttonColor,
                                 onPressed: () {
                                   return showDialog(
                                     context: context,
