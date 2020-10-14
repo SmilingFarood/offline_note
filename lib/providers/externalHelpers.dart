@@ -48,7 +48,9 @@ class ExternalHelpers with ChangeNotifier {
     var bytes = document.save();
     document.dispose();
 
-    Directory directory = await getExternalStorageDirectory();
+    Directory directory = Platform.isAndroid
+        ? await getExternalStorageDirectory()
+        : await getApplicationDocumentsDirectory();
 
     String path = directory.path;
 
